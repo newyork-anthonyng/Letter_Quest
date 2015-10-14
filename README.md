@@ -15,6 +15,7 @@ There are two phases to the game: *walking* and *fighting*.
 * When walking, letters will scroll by horizontally on the bottom of the screen as the user types.
 * Letters will not scroll off the screen until the user types it.
 * This phase will serve as a place for users to take a break and build up easy combos to get power ups.
+* This phase will have 50 letters for user to type (potential 5 power-ups).
 
 ### Fighting
 * When fighting, letters will automatically scroll by.
@@ -22,6 +23,7 @@ There are two phases to the game: *walking* and *fighting*.
 * The user must type the letters before they scroll past the defend bar. Any letters missed will damage the user.
 * Any letters typed before the defend bar will count as attacks that damage the enemy.
 * Any letters that have scrolled past the defend bar will not be able to be typed. The user must type the letters as they appear, from left to right.
+* This phase will have letters that are dependent on the type/difficulty of monster faced.
 
 ### Player Attributes and Items
 * Attack Strength
