@@ -7,6 +7,7 @@ Use css({top:100, left:200}) to set the position of the elements
 // Create a random array of letters
 var letterString = '';
 var letterSet = 'abcdefghijklmnopqrstuvwxyz1234567890'
+
 var numberSet = '1234567890';
 var speed = 2000;
 var timerId;
@@ -14,6 +15,7 @@ var timerId;
 $(function() {
   console.log('app.js loaded');
 
+  // create random string
   for(var i = 0; i < 50; i++) {
     var randomNumber = Math.floor(Math.random() * letterSet.length);
     var randomLetter = letterSet[randomNumber];
@@ -44,5 +46,6 @@ $(function() {
 var scrollLetter = function(letter) {
   console.log('scrolling: ' + letter);
   // remove the first letter
+
   letterString = letterString.slice(1);
 };
