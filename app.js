@@ -26,11 +26,18 @@ $(function() {
     var newLetter = $('<div>', {class:'scrollingLetter', id:letterString[0]});
     newLetter.html(letterString[0]);
     newLetter.css({top:100, left:$(window).width()});
-    newLetter.animate({left:'-1000px', opacity:1.0}, 10000);
+    newLetter.animate({left:'-1000px', opacity:1.0}, {duration: 10000});
     $('.scrollingLetterContainer').append(newLetter);
 
     scrollLetter(letterString[0]);
   }, speed);
+
+  // register a key listener
+  $(document).keypress(function(e) {
+    console.log(String.fromCharCode(e.keyCode) + ' was pressed.');
+  });
+
+
 });
 
 // Take a letter off of the letter string and pass it along to the current letter.
