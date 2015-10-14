@@ -35,7 +35,18 @@ There are two phases to the game: *walking* and *fighting*.
 * Health
 
 ## To Do List
-* Create mechanic for scrolling letters
-* Create mechanic for registering key strokes
+* ~~Create mechanic for scrolling letters~~
+* ~~Create mechanic for registering key strokes~~
+* Create a walking phase for the scrolling letters, where the letters stop once they reach the end of the screen
+* Create a fighting phase for the scrolling letters, where the letters continue scrolling past the screen
+* Figure out how to match typed letter against the scrolling letter
 * Create art assets
+    * Player Character
+        * Walking
+        * Fighting
+        * Hurt
+    * Background
+    * Letter bubble
+    * Enemies
+    * Heart (HUD)
 * Create enemies
