@@ -1,0 +1,12 @@
+.scrollingLetter {
+  background-color:lavender;
+  border:1px solid black;
+  border-radius:10px;
+  height:100px;
+  position:absolute;
+  width:100px;
+}
+
+.scrollingLetterContainer {
+  position:relative;
+}
