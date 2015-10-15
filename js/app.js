@@ -13,6 +13,7 @@ $(function() {
   gameTimerId = window.setInterval(function() {
     GameController.deleteOldLetters();
   }, gameSpeed);
+  
   // set up interval for scrolling letters
   scrollingTimerId = window.setInterval(function() {
     LetterScroller.scrollNewLetter();

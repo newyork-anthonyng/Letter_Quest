@@ -10,7 +10,7 @@ var GameObject = (function() {
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
   var charSet = letterSet + numberSet;
-  var arrayLength = 5;
+  var arrayLength = 10;
 
   return {
     // create new string array
@@ -36,7 +36,7 @@ var GameObject = (function() {
 
     // remove first value of array
     removeFirstValue: function() {
-      currentStringArray = currentStringArray.slice(1);
+      currentStringArray.slice(1);
     }
   }
 })();

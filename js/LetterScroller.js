@@ -26,22 +26,21 @@ var LetterScroller = (function() {
     },
 
     scrollNewLetter: function() {
-      // check if we still have letters to scroll through
-      if(currentIndex > currentStringArray.length - 1) {
+      // check if there are no more letters to scroll through
+      if(currentIndex >= currentStringArray.length) {
         return false;
-      };
+      }
 
-      // create a new letter
+      // create a new letterSize
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
       newLetter.css({top:heightOffset, left:$(window).width() + leftOffset});
 
-      // add a scroll event to the letter
-      // create left position based on the position of the letter in the array
+      // add scroll event to the Letter
       newLetter.animate({left: '-200px'}, {duration: animationSpeed, easing: 'swing'});
       $('.scrollingLetterContainer').append(newLetter);
 
-      // scroll the next letter
+      // go to the next letter
       currentIndex++;
     },
 
@@ -54,6 +53,8 @@ var LetterScroller = (function() {
 
       // delete the first letter from the currentStringArray
       currentStringArray.shift();
+      // update the current index, since we are deleting from the front of the array. Without this, letters will be skipped.
+      currentIndex--;
     }
 
   }
