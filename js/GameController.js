@@ -5,7 +5,13 @@ GameController
   -delete the letters when they scroll off the screen
 */
 var GameController = (function() {
+  // offset for position of where letters will get deleted
   var deleteScrollOffset = 100;
+
+  // scrolling speed. Starting default is 1000
+  var speed = [1000, 900, 800, 700, 600, 500];
+  var i = 0;
+
   // type zone is the area on screen where it'll check for a type match
   var typeZoneLeft = deleteScrollOffset + 10;
   var typeZoneRight = deleteScrollOffset + 200;
@@ -79,6 +85,15 @@ var GameController = (function() {
         GameController.damagePlayer(1);
       }
 
+    },
+
+    // change scroll speed to update difficulty
+    changeScrollSpeed: function() {
+      console.log('changing scorll speed');
+      clearInterval(scrollingTimerId);
+      scrollingTimerId = window.setInterval(function() {
+        LetterScroller.scrollNewLetter();
+      }, speed[i++]);
     },
 
     damagePlayer: function() {

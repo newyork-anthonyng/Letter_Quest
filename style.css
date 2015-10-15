@@ -26,3 +26,16 @@
   top:413px;
   left:100px;
 }
+
+.image {
+  height:500px;
+  width:800px;
+}
+
+.hero {
+  float:left;
+}
+
+.enemy {
+  float:right;
+}

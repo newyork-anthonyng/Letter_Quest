@@ -8,10 +8,10 @@ var LetterScroller = (function() {
 
   var currentStringArray = [];
   var currentIndex = 0;
-  var heightOffset = 50;
+  var heightOffset = -100;
   var leftOffset = 200;
   var letterSize = 100;
-  var animationSpeed = 5000;
+  var animationSpeed = 6000;
 
   return {
     createStringArray: function(array) {
