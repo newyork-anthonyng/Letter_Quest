@@ -31,11 +31,11 @@ var GameController = (function() {
 
       if(firstLetter.position().left < typeZoneRight && firstLetter.position().left > typeZoneLeft) {
         if(GameObject.checkForMatch(letter)) {
-          console.log('Yay! Removed letter');
+          $('.health').html('Great job!');
           GameObject.removeFirstValue();
           LetterScroller.deleteLetter();
         } else {
-          console.log('Incorrect key was pressed');
+          GameController.damagePlayer();
         }
       }
 
@@ -45,20 +45,32 @@ var GameController = (function() {
     deleteOldLetters: function() {
       // check to see if we need to create new array
       GameObject.createStringArray();
-      
+
       // check to see which letters are off the screen
       var firstLetter = $('.scrollingLetter').eq(0);
       if(firstLetter.position() === undefined) {
         return false;
       }
 
+      // user didn't type the letter
       if(firstLetter.position().left < deleteScrollOffset) {
-        console.log('Letter was missed');
         GameObject.removeFirstValue();
         LetterScroller.deleteLetter();
+        GameController.damagePlayer(1);
       }
 
+    },
+
+    damagePlayer: function() {
+      // update view
+      Player.damagePlayer(1);
+      // $('.health').html('Ouch!');
+    },
+
+    updateDisplay: function() {
+      $('.health').html(Player.getHealth());
     }
+
   };
 
 })();

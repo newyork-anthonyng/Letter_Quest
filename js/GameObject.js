@@ -17,8 +17,6 @@ var GameObject = (function() {
     createStringArray: function() {
       // only create when currentStringArray is empty
       if(currentStringArray.length === 0) {
-        console.log('creating new string');
-
         for(var i = 0; i < arrayLength; i++) {
           var randomNumber = Math.floor(Math.random() * charSet.length);
           currentStringArray.push(charSet[randomNumber]);

@@ -10,6 +10,10 @@ var Player = (function() {
 
     healPlayer: function(amount) {
       health += amount;
+    },
+
+    getHealth: function() {
+      return health;
     }
   }
 })();

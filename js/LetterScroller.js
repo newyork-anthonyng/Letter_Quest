@@ -15,7 +15,6 @@ var LetterScroller = (function() {
 
   return {
     createStringArray: function(array) {
-      console.log('letter scrolling restarting');
       if(currentStringArray.length === 0) {
         currentStringArray = array;
         currentIndex = 0;
