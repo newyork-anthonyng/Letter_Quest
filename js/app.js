@@ -1,5 +1,7 @@
-var speed = 500;
-var timerId;
+var gameSpeed = 500;
+var scrollingSpeed = 1000;
+var gameTimerId;
+var scrollingTimerId;
 
 $(function() {
   // create initial random string
@@ -7,10 +9,16 @@ $(function() {
   GameController.startGame();
   LetterScroller.createStringArray(GameObject.getStringArray());
 
+  // set up interval for Game Controller
+  gameTimerId = window.setInterval(function() {
+    GameController.deleteOldLetters();
+  }, gameSpeed);
   // set up interval for scrolling letters
-  timerId = window.setInterval(function() {
+  scrollingTimerId = window.setInterval(function() {
     LetterScroller.scrollNewLetter();
-  }, speed);
+  }, scrollingSpeed);
+
+
 
   // set up key listener
   KeyListener.setUp();

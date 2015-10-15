@@ -1,31 +1,28 @@
 /*
   LetterScroller
     -scroll all of the letters through the game window
+    -check to see when letter has scrolled past the typing zone
 */
 
 var LetterScroller = (function() {
 
   var currentStringArray = [];
-  var currentIndex = 0;   // keeps the current index of the letter you're scrolling
+  var currentIndex = 0;
   var heightOffset = 50;
-  var leftOffset = 50;
+  var leftOffset = 200;
   var letterSize = 100;
   var animationSpeed = 5000;
 
   return {
     createStringArray: function(array) {
       if(currentStringArray.length === 0) {
-        LetterScroller.setStringArray(array);
+        currentStringArray = array;
         currentIndex = 0;
       };
     },
 
     getStringArray: function() {
       return currentStringArray;
-    },
-
-    setStringArray: function(array) {
-      currentStringArray = array;
     },
 
     scrollNewLetter: function() {
@@ -37,13 +34,11 @@ var LetterScroller = (function() {
       // create a new letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
-      newLetter.css({top:heightOffset, left:$(window).width() + 2000});
+      newLetter.css({top:heightOffset, left:$(window).width() + leftOffset});
 
       // add a scroll event to the letter
       // create left position based on the position of the letter in the array
-      var leftPosition = '' + (currentIndex * letterSize + leftOffset) + 'px';
-
-      newLetter.animate({left: leftPosition}, {duration: animationSpeed, easing: 'swing'});
+      newLetter.animate({left: '-200px'}, {duration: animationSpeed, easing: 'swing'});
       $('.scrollingLetterContainer').append(newLetter);
 
       // scroll the next letter
@@ -60,13 +55,6 @@ var LetterScroller = (function() {
 
       // delete the first letter from the currentStringArray
       currentStringArray.shift();
-
-      // move all of the other div's to the left
-      for(var i = 0; i < myScrollingLetters.length; i++) {
-        var leftPosition = '' + (i * letterSize + 50) + 'px';
-        myScrollingLetters.eq(i).stop();  // exit out of previous animations
-        myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed / 2, easing:'linear'});
-      };
     }
 
   }

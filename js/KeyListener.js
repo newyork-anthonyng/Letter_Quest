@@ -1,5 +1,4 @@
 var KeyListener = (function() {
-  var lastKeyPress;
 
   return {
     // set up eventListener
@@ -12,14 +11,8 @@ var KeyListener = (function() {
     // update lastKeyPress
     processKeyPress: function(keyPress) {
       var myKeyPress = keyPress.toLowerCase();
-      console.log(myKeyPress + ' was pressed.');
-      lastKeyPress = myKeyPress;
-      GameController.checkForMatch(lastKeyPress);
+      GameController.checkForMatch(myKeyPress);
     },
-
-    getLastKeyPress: function() {
-      return lastKeyPress;
-    }
 
   }
 })();

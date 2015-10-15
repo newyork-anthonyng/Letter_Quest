@@ -5,14 +5,13 @@
 */
 
 var GameObject = (function() {
-  // private
+
   var currentStringArray = [];
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
   var charSet = letterSet + numberSet;
-  var arrayLength = 10;
+  var arrayLength = 50;
 
-  // public
   return {
     // create new string array
     createStringArray: function() {
@@ -39,6 +38,5 @@ var GameObject = (function() {
     removeFirstValue: function() {
       currentStringArray = currentStringArray.slice(1);
     }
-
   }
 })();
