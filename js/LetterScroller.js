@@ -1,74 +1,4 @@
 /*
-  GameObject
-    -create new random strings
-    -match up typed letters against current letter
-*/
-
-var GameObject = (function() {
-  // private
-  var currentStringArray = [];
-  var letterSet = 'abcdefghijklmnopqrstuvwxyz';
-  var numberSet = '1234567890';
-  var charSet = letterSet + numberSet;
-  var arrayLength = 10;
-
-  // public
-  return {
-    // create new string array
-    createStringArray: function() {
-      // only create when currentStringArray is empty
-      if(currentStringArray.length === 0) {
-        for(var i = 0; i < arrayLength; i++) {
-          var randomNumber = Math.floor(Math.random() * charSet.length);
-          currentStringArray.push(charSet[randomNumber]);
-        };
-      };
-    },
-
-    // getter for currentStringArray
-    getStringArray: function() {
-      return currentStringArray;
-    },
-
-    // check for match with first letter of currentStringArray
-    checkForMatch: function(letter) {
-      return letter === currentStringArray[0] ? true : false;
-    },
-
-    // remove first value of array
-    removeFirstValue: function() {
-      currentStringArray = currentStringArray.slice(1);
-    }
-
-  }
-})();
-
-/* GameController
-*/
-var GameController = (function() {
-  // private
-
-  return {
-    // start a new game
-    startGame: function() {
-      GameObject.createStringArray();
-      console.log(GameObject.getStringArray());
-    },
-
-    // check typed value and see if it matches
-    checkForMatch: function(letter) {
-      if(GameObject.checkForMatch(letter)) {
-        GameObject.removeFirstValue();
-        LetterScroller.deleteLetter();
-      } else {
-        console.log('Incorrect key was pressed');
-      };
-    }
-  };
-
-})();
-
-/*
   LetterScroller
     -scroll all of the letters through the game window
 */
@@ -137,32 +67,6 @@ var LetterScroller = (function() {
         myScrollingLetters.eq(i).stop();  // exit out of previous animations
         myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed / 2});
       };
-    }
-
-  }
-})();
-
-var KeyListener = (function() {
-  var lastKeyPress;
-
-  return {
-    // set up eventListener
-    setUp: function() {
-      $(document).keypress(function(e) {
-        KeyListener.processKeyPress(String.fromCharCode(e.keyCode));
-      });
-    },
-
-    // update lastKeyPress
-    processKeyPress: function(keyPress) {
-      var myKeyPress = keyPress.toLowerCase();
-      console.log(myKeyPress + ' was pressed.');
-      lastKeyPress = myKeyPress;
-      GameController.checkForMatch(lastKeyPress);
-    },
-
-    getLastKeyPress: function() {
-      return lastKeyPress;
     }
 
   }
