@@ -9,15 +9,16 @@ var timerId;
 $(function() {
   // create initial random string
   console.log('app.js loaded');
-  GameObject.createStringArray();
-  LetterScroller.createStringArray(GameObject.getStringArray());
+  GameController.startGame();
+  // LetterScroller.createStringArray(GameObject.getStringArray());
 
   // set up interval for scrolling letters
-  timerId = window.setInterval(function() {
-    LetterScroller.scrollNewLetter();
-  }, speed);
+  // timerId = window.setInterval(function() {
+  //   LetterScroller.scrollNewLetter();
+  // }, speed);
 
   // set up key listener
   KeyListener.setUp();
+
 
 });

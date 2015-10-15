@@ -43,6 +43,31 @@ var GameObject = (function() {
   }
 })();
 
+/* GameController
+*/
+var GameController = (function() {
+  // private
+
+  return {
+    // start a new game
+    startGame: function() {
+      GameObject.createStringArray();
+      console.log(GameObject.getStringArray());
+    },
+
+    // check typed value and see if it matches
+    checkForMatch: function(letter) {
+      if(GameObject.checkForMatch(letter)) {
+        console.log('Correct!');
+        GameObject.removeFirstValue();
+      } else {
+        console.log('Incorrect key was pressed');
+      };
+    }
+  };
+
+})();
+
 /*
   LetterScroller
     -scroll all of the letters through the game window
@@ -95,6 +120,7 @@ var KeyListener = (function() {
     processKeyPress: function(keyPress) {
       console.log(keyPress + ' was pressed.');
       lastKeyPress = keyPress;
+      GameController.checkForMatch(lastKeyPress);
     },
 
     getLastKeyPress: function() {
