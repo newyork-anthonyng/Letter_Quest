@@ -10,7 +10,7 @@ var GameObject = (function() {
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
   var charSet = letterSet + numberSet;
-  var arrayLength = 50;
+  var arrayLength = 5;
 
   return {
     // create new string array

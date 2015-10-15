@@ -49,7 +49,6 @@ var LetterScroller = (function() {
     deleteLetter: function() {
       // find the first letter div and delete it
       var myScrollingLetters = $('.scrollingLetter');
-      console.log('delete letter');
       myScrollingLetters.eq(0).remove();
       myScrollingLetters = $('.scrollingLetter'); // update scrolling letters to have the first element removed
 
