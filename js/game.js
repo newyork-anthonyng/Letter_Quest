@@ -77,7 +77,7 @@ var LetterScroller = (function() {
 
   var currentStringArray = [];
   var currentIndex = 0;   // keeps the current index of the letter you're scrolling
-  var heightOffset = 200;
+  var heightOffset = 50;
   var leftOffset = 50;
   var letterSize = 100;
   var animationSpeed = 6000;
@@ -107,7 +107,7 @@ var LetterScroller = (function() {
       // create a new letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
-      newLetter.css({top:$(window).height() - heightOffset, left:$(window).width() + 2000});
+      newLetter.css({top:heightOffset, left:$(window).width() + 2000});
 
       // add a scroll event to the letter
       // create left position based on the position of the letter in the array
@@ -135,7 +135,7 @@ var LetterScroller = (function() {
       for(var i = 0; i < myScrollingLetters.length; i++) {
         var leftPosition = '' + (i * letterSize + 50) + 'px';
         myScrollingLetters.eq(i).stop();  // exit out of previous animations
-        myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed});
+        myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed / 2});
       };
     }
 
