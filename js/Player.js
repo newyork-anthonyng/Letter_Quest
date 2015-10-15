@@ -4,6 +4,10 @@ var Player = (function() {
 
   // public methods
   return {
+    resetPlayer: function() {
+      health = 5;
+    },
+
     damagePlayer: function(amount) {
       health -= amount;
     },

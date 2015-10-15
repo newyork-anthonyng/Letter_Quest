@@ -37,9 +37,7 @@ There are two phases to the game: *walking* and *fighting*.
 ## To Do List
 * ~~Create mechanic for scrolling letters~~
 * ~~Create mechanic for registering key strokes~~
-* Create a walking phase for the scrolling letters, where the letters stop once they reach the end of the screen
-* Create a fighting phase for the scrolling letters, where the letters continue scrolling past the screen
-* Figure out how to match typed letter against the scrolling letter
+* ~~Figure out how to match typed letter against the scrolling letter~~
 * Create art assets
     * Player Character
         * Walking

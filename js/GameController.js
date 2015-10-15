@@ -13,12 +13,31 @@ var GameController = (function() {
   return {
     // start a new game
     startGame: function() {
+      // set up interval for Game Controller
+      gameTimerId = window.setInterval(function() {
+        GameController.updateGame();
+      }, gameSpeed);
+
+      // set up interval for scrolling letters
+      scrollingTimerId = window.setInterval(function() {
+        LetterScroller.scrollNewLetter();
+      }, scrollingSpeed);
+
+      KeyListener.setUp();
+
       GameObject.createStringArray();
+      LetterScroller.createStringArray(GameObject.getStringArray());
 
       // Create the typing zone
       var typingZone = $('<div>', {class:'typingContainer'});
       typingZone.css({'width': '' + (typeZoneRight - typeZoneLeft) + 'px', 'height': '100px', 'left': '' + typeZoneLeft + 'px'});
       $('body').append(typingZone);
+
+      // Reset player health
+      Player.resetPlayer();
+
+      // Get rid of restart button
+      $('button').remove();
     },
 
     // check typed value and see if it matches
@@ -54,6 +73,7 @@ var GameController = (function() {
 
       // user didn't type the letter
       if(firstLetter.position().left < deleteScrollOffset) {
+        console.log('deleting old letters');
         GameObject.removeFirstValue();
         LetterScroller.deleteLetter();
         GameController.damagePlayer(1);
@@ -64,11 +84,35 @@ var GameController = (function() {
     damagePlayer: function() {
       // update view
       Player.damagePlayer(1);
-      // $('.health').html('Ouch!');
+    },
+
+    // update game will be called every 'game tick'
+    updateGame: function() {
+      GameController.updateDisplay();
+      GameController.deleteOldLetters();
+
+      // check for death
+      if(Player.getHealth() === 0) {
+        GameController.endGame();
+      }
     },
 
     updateDisplay: function() {
       $('.health').html(Player.getHealth());
+    },
+
+    endGame: function() {
+      console.log('game is over');
+      // stop all timers
+      clearInterval(gameTimerId)
+      clearInterval(scrollingTimerId);
+
+      // create a restart button
+      var restartButton = $('<button>Restart Game</button>', {class:'restart'});
+      $('body').prepend(restartButton);
+      restartButton.click(function() {
+        GameController.startGame();
+      });
     }
 
   };
