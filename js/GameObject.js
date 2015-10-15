@@ -10,23 +10,24 @@ var GameObject = (function() {
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
   var charSet = letterSet + numberSet;
-  var arrayLength = 10;
+  var arrayLength = 12;
 
   return {
     // create new string array
     createStringArray: function() {
-      // only create when currentStringArray is empty
+      // check if we still have an array
       if(currentStringArray.length === 0) {
         for(var i = 0; i < arrayLength; i++) {
           var randomNumber = Math.floor(Math.random() * charSet.length);
           currentStringArray.push(charSet[randomNumber]);
         };
         console.log(currentStringArray);
+
+        // Game speed will increase everytime we create a new string array
         GameController.changeScrollSpeed();
       };
     },
 
-    // getter for currentStringArray
     getStringArray: function() {
       return currentStringArray;
     },

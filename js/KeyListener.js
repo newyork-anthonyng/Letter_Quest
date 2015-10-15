@@ -8,11 +8,10 @@ var KeyListener = (function() {
       });
     },
 
-    // update lastKeyPress
     processKeyPress: function(keyPress) {
       var myKeyPress = keyPress.toLowerCase();
       GameController.checkForMatch(myKeyPress);
-    },
+    }
 
   }
 })();

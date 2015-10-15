@@ -39,3 +39,8 @@
 .enemy {
   float:right;
 }
+
+.health {
+  font-family:Helvetica;
+  font-size:36px;
+}

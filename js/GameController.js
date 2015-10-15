@@ -4,56 +4,56 @@ GameController
   -check to see if the user entered key correctly
   -delete the letters when they scroll off the screen
 */
+
 var GameController = (function() {
-  // offset for position of where letters will get deleted
+  // offset for position where letters will get deleted ('deleteZone');
   var deleteScrollOffset = 100;
 
-  // scrolling speed. Starting default is 1000
+  // scrolling speed. 'i' is counter for the 'speed' array
   var speed = [1000, 900, 800, 700, 600, 500];
-  var i = 0;
+  var speedCounter = 0;
 
-  // type zone is the area on screen where it'll check for a type match
+  // 'typeZone is the area on screen where you type for matches
   var typeZoneLeft = deleteScrollOffset + 10;
   var typeZoneRight = deleteScrollOffset + 200;
 
   return {
-    // start a new game
+
     startGame: function() {
-      // set up interval for Game Controller
+      // set up intervals and listeners
       gameTimerId = window.setInterval(function() {
         GameController.updateGame();
       }, gameSpeed);
 
-      // set up interval for scrolling letters
       scrollingTimerId = window.setInterval(function() {
         LetterScroller.scrollNewLetter();
       }, scrollingSpeed);
 
       KeyListener.setUp();
 
+      // create initial random strings
       GameObject.createStringArray();
       LetterScroller.createStringArray(GameObject.getStringArray());
 
-      // Create the typing zone
+      // Create typingZone
       var typingZone = $('<div>', {class:'typingContainer'});
       typingZone.css({'width': '' + (typeZoneRight - typeZoneLeft) + 'px', 'height': '100px', 'left': '' + typeZoneLeft + 'px'});
       $('body').append(typingZone);
 
-      // Reset player health
+      // Reset player elements
       Player.resetPlayer();
-
-      // Get rid of restart button
       $('button').remove();
     },
 
-    // check typed value and see if it matches
+    // check typed value for a match
     checkForMatch: function(letter) {
-      // only check for match when letter is inside the typezone
+      // check for match when letter is inside the 'typeZone'
       var firstLetter = $('.scrollingLetter').eq(0);
       if(firstLetter.position() === undefined) {
         return false;
       }
 
+      // checking position of the scrolling letter
       if(firstLetter.position().left < typeZoneRight && firstLetter.position().left > typeZoneLeft) {
         if(GameObject.checkForMatch(letter)) {
           $('.health').html('Great job!');
@@ -66,9 +66,9 @@ var GameController = (function() {
 
     },
 
-    // check for letters out of screen
+    // delete letters past the deleteZone
     deleteOldLetters: function() {
-      // check to see if we need to create new array
+      // check to see if we need to create new array if our current one is blank
       GameObject.createStringArray();
 
       // check to see which letters are off the screen
@@ -77,7 +77,7 @@ var GameController = (function() {
         return false;
       }
 
-      // user didn't type the letter
+      // delete letters that the user missed
       if(firstLetter.position().left < deleteScrollOffset) {
         console.log('deleting old letters');
         GameObject.removeFirstValue();
@@ -89,25 +89,27 @@ var GameController = (function() {
 
     // change scroll speed to update difficulty
     changeScrollSpeed: function() {
-      console.log('changing scorll speed');
+      // clear old interval
       clearInterval(scrollingTimerId);
+
+      // set new interval
       scrollingTimerId = window.setInterval(function() {
         LetterScroller.scrollNewLetter();
-      }, speed[i++]);
+      }, speed[speedCounter++]);
+      console.log('changing scroll speed: ' + speed[speedCounter]);
     },
 
     damagePlayer: function() {
-      // update view
       Player.damagePlayer(1);
     },
 
     // update game will be called every 'game tick'
     updateGame: function() {
-      GameController.updateDisplay();
       GameController.deleteOldLetters();
+      GameController.updateDisplay();
 
       // check for death
-      if(Player.getHealth() === 0) {
+      if(Player.getHealth() <= 0) {
         GameController.endGame();
       }
     },
@@ -118,9 +120,11 @@ var GameController = (function() {
 
     endGame: function() {
       console.log('game is over');
-      // stop all timers
+
+      // stop all timers and clear out existing scrolling letters
       clearInterval(gameTimerId)
       clearInterval(scrollingTimerId);
+      $('.scrollingLetterContainer').empty();
 
       // create a restart button
       var restartButton = $('<button>Restart Game</button>', {class:'restart'});
@@ -131,5 +135,4 @@ var GameController = (function() {
     }
 
   };
-
 })();

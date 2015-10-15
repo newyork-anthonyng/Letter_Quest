@@ -1,8 +1,6 @@
 var Player = (function() {
-  // player methods
   var health = 5;
 
-  // public methods
   return {
     resetPlayer: function() {
       health = 5;
@@ -19,5 +17,6 @@ var Player = (function() {
     getHealth: function() {
       return health;
     }
+
   }
 })();
