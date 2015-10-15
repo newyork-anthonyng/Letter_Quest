@@ -1,9 +1,4 @@
-// Create a random array of letters
-var letterString = '';
-var letterSet = 'abcdefghijklmnopqrstuvwxyz1234567890'
-
-var numberSet = '1234567890';
-var speed = 800;
+var speed = 500;
 var timerId;
 
 $(function() {

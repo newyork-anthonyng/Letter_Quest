@@ -10,7 +10,7 @@ var LetterScroller = (function() {
   var heightOffset = 50;
   var leftOffset = 50;
   var letterSize = 100;
-  var animationSpeed = 6000;
+  var animationSpeed = 5000;
 
   return {
     createStringArray: function(array) {
@@ -43,7 +43,7 @@ var LetterScroller = (function() {
       // create left position based on the position of the letter in the array
       var leftPosition = '' + (currentIndex * letterSize + leftOffset) + 'px';
 
-      newLetter.animate({left: leftPosition}, {duration: animationSpeed});
+      newLetter.animate({left: leftPosition}, {duration: animationSpeed, easing: 'swing'});
       $('.scrollingLetterContainer').append(newLetter);
 
       // scroll the next letter
@@ -65,7 +65,7 @@ var LetterScroller = (function() {
       for(var i = 0; i < myScrollingLetters.length; i++) {
         var leftPosition = '' + (i * letterSize + 50) + 'px';
         myScrollingLetters.eq(i).stop();  // exit out of previous animations
-        myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed / 2});
+        myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed / 2, easing:'linear'});
       };
     }
 

@@ -1,4 +1,5 @@
-/* GameController
+/*
+GameController
 */
 var GameController = (function() {
   // private
