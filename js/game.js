@@ -10,7 +10,7 @@ var GameObject = (function() {
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
   var charSet = letterSet + numberSet;
-  var arrayLength = 40;
+  var arrayLength = 10;
 
   // public
   return {
@@ -37,7 +37,7 @@ var GameObject = (function() {
 
     // remove first value of array
     removeFirstValue: function() {
-      currentStringArray = currentStringArray.splice(1);
+      currentStringArray = currentStringArray.slice(1);
     }
 
   }
@@ -58,8 +58,8 @@ var GameController = (function() {
     // check typed value and see if it matches
     checkForMatch: function(letter) {
       if(GameObject.checkForMatch(letter)) {
-        console.log('Correct!');
         GameObject.removeFirstValue();
+        LetterScroller.deleteLetter();
       } else {
         console.log('Incorrect key was pressed');
       };
@@ -76,11 +76,17 @@ var GameController = (function() {
 var LetterScroller = (function() {
 
   var currentStringArray = [];
+  var currentIndex = 0;   // keeps the current index of the letter you're scrolling
+  var heightOffset = 200;
+  var leftOffset = 50;
+  var letterSize = 100;
+  var animationSpeed = 6000;
 
   return {
     createStringArray: function(array) {
       if(currentStringArray.length === 0) {
-        currentStringArray = array;
+        LetterScroller.setStringArray(array);
+        currentIndex = 0;
       };
     },
 
@@ -88,19 +94,50 @@ var LetterScroller = (function() {
       return currentStringArray;
     },
 
+    setStringArray: function(array) {
+      currentStringArray = array;
+    },
+
     scrollNewLetter: function() {
+      // check if we still have letters to scroll through
+      if(currentIndex > currentStringArray.length - 1) {
+        return false;
+      };
+
       // create a new letter
-      var newLetter = $('<div>', {id:currentStringArray[0], class:'scrollingLetter'});
-      newLetter.html(currentStringArray[0]);
-      newLetter.css({top:$(window).height() - 200, left:$(window).width()});
+      var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
+      newLetter.html(currentStringArray[currentIndex]);
+      newLetter.css({top:$(window).height() - heightOffset, left:$(window).width() + 2000});
 
       // add a scroll event to the letter
-      newLetter.animate({left:'-1000px'}, {duration:6000});
+      // create left position based on the position of the letter in the array
+      var leftPosition = '' + (currentIndex * letterSize + leftOffset) + 'px';
+
+      newLetter.animate({left: leftPosition}, {duration: animationSpeed});
       $('.scrollingLetterContainer').append(newLetter);
 
-      // remove the old letter
-      currentStringArray = currentStringArray.splice(1);
+      // scroll the next letter
+      currentIndex++;
     },
+
+    // remove the first letter, and scroll all the other letters to the left
+    deleteLetter: function() {
+      // find the first letter div and delete it
+      var myScrollingLetters = $('.scrollingLetter');
+      console.log('delete letter');
+      myScrollingLetters.eq(0).remove();
+      myScrollingLetters = $('.scrollingLetter'); // update scrolling letters to have the first element removed
+
+      // delete the first letter from the currentStringArray
+      currentStringArray.shift();
+
+      // move all of the other div's to the left
+      for(var i = 0; i < myScrollingLetters.length; i++) {
+        var leftPosition = '' + (i * letterSize + 50) + 'px';
+        myScrollingLetters.eq(i).stop();  // exit out of previous animations
+        myScrollingLetters.eq(i).animate({left: leftPosition}, {duration: animationSpeed});
+      };
+    }
 
   }
 })();
@@ -118,8 +155,9 @@ var KeyListener = (function() {
 
     // update lastKeyPress
     processKeyPress: function(keyPress) {
-      console.log(keyPress + ' was pressed.');
-      lastKeyPress = keyPress;
+      var myKeyPress = keyPress.toLowerCase();
+      console.log(myKeyPress + ' was pressed.');
+      lastKeyPress = myKeyPress;
       GameController.checkForMatch(lastKeyPress);
     },
 
