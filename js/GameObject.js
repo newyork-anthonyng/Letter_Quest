@@ -10,17 +10,20 @@ var GameObject = (function() {
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
   var charSet = letterSet + numberSet;
-  var arrayLength = 10;
+  var arrayLength = 5;
 
   return {
     // create new string array
     createStringArray: function() {
       // only create when currentStringArray is empty
       if(currentStringArray.length === 0) {
+        console.log('creating new string');
+
         for(var i = 0; i < arrayLength; i++) {
           var randomNumber = Math.floor(Math.random() * charSet.length);
           currentStringArray.push(charSet[randomNumber]);
         };
+        console.log(currentStringArray);
       };
     },
 

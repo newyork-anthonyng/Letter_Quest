@@ -19,6 +19,8 @@
 
 .typingContainer {
   background-color:indianred;
+  border-radius:10%;
+  opacity:0.5;
 
   position:absolute;
   top:413px;

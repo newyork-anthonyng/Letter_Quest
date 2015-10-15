@@ -14,7 +14,6 @@ var GameController = (function() {
     // start a new game
     startGame: function() {
       GameObject.createStringArray();
-      console.log(GameObject.getStringArray());
 
       // Create the typing zone
       var typingZone = $('<div>', {class:'typingContainer'});
@@ -44,6 +43,9 @@ var GameController = (function() {
 
     // check for letters out of screen
     deleteOldLetters: function() {
+      // check to see if we need to create new array
+      GameObject.createStringArray();
+      
       // check to see which letters are off the screen
       var firstLetter = $('.scrollingLetter').eq(0);
       if(firstLetter.position() === undefined) {
@@ -55,6 +57,7 @@ var GameController = (function() {
         GameObject.removeFirstValue();
         LetterScroller.deleteLetter();
       }
+
     }
   };
 
