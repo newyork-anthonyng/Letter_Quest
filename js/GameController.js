@@ -64,7 +64,7 @@ var GameController = (function() {
         if(GameObject.checkForMatch(letter)) {
           GameController.showFlavor();
           GameObject.removeFirstValue();
-          LetterScroller.deleteLetter();
+          LetterScroller.deleteLetter(true);
         } else {
           GameController.damagePlayer();
         }
@@ -87,7 +87,7 @@ var GameController = (function() {
       if(firstLetter.position().left < deleteScrollOffset) {
         console.log('deleting old letters');
         GameObject.removeFirstValue();
-        LetterScroller.deleteLetter();
+        LetterScroller.deleteLetter(false);
         GameController.damagePlayer(1);
       }
 

@@ -33,7 +33,7 @@ var LetterScroller = (function() {
       if(currentIndex >= currentStringArray.length) {
         return false;
       }
-      
+
       // create a new scrolling letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
@@ -48,9 +48,21 @@ var LetterScroller = (function() {
     },
 
     // remove the first letter
-    deleteLetter: function() {
+    deleteLetter: function(shake) {
       // find the first scrolling letter and delete it
+      // check if we want to animate letter first with a shake or a puff
       var myScrollingLetters = $('.scrollingLetter');
+
+      if(shake) {
+        // scrolling letter was typed correctly
+        // animate the enemy
+        $('.enemy').effect('shake', {distance:15});
+      } else {
+        // scrolling letter was missed
+        $('.health').effect('shake', {direction:'up', distance:4});
+        $('.hero').effect('shake', {distance:15});
+      }
+
       myScrollingLetters.eq(0).remove();
 
       // update currentStringArray
