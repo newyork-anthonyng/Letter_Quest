@@ -26,7 +26,10 @@ var GameObject = (function() {
 
         // Game speed will increase everytime we create a new string array
         GameController.changeScrollSpeed();
+        return true;
       };
+
+      return false;
     },
 
     getStringArray: function() {

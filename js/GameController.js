@@ -16,9 +16,8 @@ var GameController = (function() {
   // images
   var flavorImageArray = ['images/flavor1.png', 'images/flavor2.png', 'images/flavor3.png', 'images/flavor4.png', 'images/flavor5.png'];
   var healthImage = 'url(images/health.png)';
-  var enemyHealthImage = 'url(images/enemyHealth.png)';
   var heroImage = ['images/superhero.png', 'images/superheroFighting.png', 'images/superheroHurt.png', 'images/superheroDead.png'];
-  var enemyImage = ['images/enemy1.png', 'images/enemy2.png'];
+  var enemyImage = ['images/enemy1.png', 'images/enemy2.png', 'images/enemy3.png', 'images/enemy4.png'];
 
   // typeZone is the area on screen where you type for matches
   var typeZoneLeft = deleteScrollOffset + 10;
@@ -52,7 +51,7 @@ var GameController = (function() {
 
       // Reset player elements
       Player.resetPlayer();
-
+      // Reset player image
       var playerImage = $('<img></img>');
       playerImage.attr('src', heroImage[1]);
       $('.hero').empty();
@@ -95,7 +94,15 @@ var GameController = (function() {
     // delete letters past the deleteZone
     deleteOldLetters: function() {
       // check to see if we need to create new array if our current one is blank
-      GameObject.createStringArray();
+      if(GameObject.createStringArray()) {
+        // change enemy sprite
+        var myEnemyImage = $('<img></img>');
+        var randomImage = Math.floor(Math.random() * enemyImage.length);
+        myEnemyImage.attr('src', enemyImage[randomImage]);
+        myEnemyImage.css({'width': '75%'});
+        $('.enemy').empty(myEnemyImage);
+        $('.enemy').append(myEnemyImage);
+      };
 
       // check to see which letters are off the screen
       var firstLetter = $('.scrollingLetter').eq(0);
@@ -135,10 +142,12 @@ var GameController = (function() {
 
       // update back to fighting hero
       window.setTimeout(function() {
-        var playerImage = $('<img></img>');
-        playerImage.attr('src', heroImage[1]);
-        $('.hero').empty();
-        $('.hero').append(playerImage);
+        if(Player.getHealth() > 0) {
+          var playerImage = $('<img></img>');
+          playerImage.attr('src', heroImage[1]);
+          $('.hero').empty();
+          $('.hero').append(playerImage);
+        }
       }, 500);
     },
 
