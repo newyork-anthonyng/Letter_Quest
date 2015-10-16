@@ -52,11 +52,23 @@ var GameController = (function() {
 
       // Reset player elements
       Player.resetPlayer();
-      // player image
+
       var playerImage = $('<img></img>');
       playerImage.attr('src', heroImage[1]);
       $('.hero').empty();
       $('.hero').append(playerImage);
+
+      // Add enemy
+      var myEnemyImage = $('<img></img>');
+      var randomImage = Math.floor(Math.random() * enemyImage.length);
+      myEnemyImage.attr('src', enemyImage[randomImage]);
+      myEnemyImage.css({'width': '75%'});
+      $('.enemy').empty(myEnemyImage);
+      $('.enemy').append(myEnemyImage);
+
+      // Reset flavor
+      $('.flavor').css({'background-image':''});
+
     },
 
     // check typed value for a match
@@ -93,7 +105,6 @@ var GameController = (function() {
 
       // delete letters that the user missed
       if(firstLetter.position().left < deleteScrollOffset) {
-        console.log('deleting old letters');
         GameObject.removeFirstValue();
         LetterScroller.deleteLetter(false);
         GameController.damagePlayer(1);
@@ -115,6 +126,20 @@ var GameController = (function() {
 
     damagePlayer: function() {
       Player.damagePlayer(1);
+
+      // update player image
+      var playerImage = $('<img></img>');
+      playerImage.attr('src', heroImage[2]);
+      $('.hero').empty();
+      $('.hero').append(playerImage);
+
+      // update back to fighting hero
+      window.setTimeout(function() {
+        var playerImage = $('<img></img>');
+        playerImage.attr('src', heroImage[1]);
+        $('.hero').empty();
+        $('.hero').append(playerImage);
+      }, 500);
     },
 
     // update game will be called every 'game tick'
@@ -139,7 +164,7 @@ var GameController = (function() {
         var newHealth = $('<div>');
         newHealth.css({'background-image': healthImage, 'height':'100px', 'width':'100px', 'float':'left', 'background-size': 'cover', 'border':'1px solid black'});
         healthContainer.append(newHealth);
-      };
+      }
     },
 
     endGame: function() {
@@ -157,6 +182,9 @@ var GameController = (function() {
       restartButton.click(function() {
         GameController.startGame();
       });
+
+      // show dead hero
+      $('.flavor').css({'background-image': 'url(' + heroImage[3] + ')', 'background-repeat': 'no-repeat'});
     },
 
     showFlavor: function() {
@@ -172,7 +200,7 @@ var GameController = (function() {
       // set timeOut to remove the background image
       window.setTimeout(function(){
         flavorContainer.css('background-image', '');
-      }, 500);
+      }, 450);
     }
 
   };
