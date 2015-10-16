@@ -21,6 +21,7 @@ var GameController = (function() {
 
     startGame: function() {
       // set up intervals and listeners
+      console.log('Starting game');
       gameTimerId = window.setInterval(function() {
         GameController.updateGame();
       }, gameSpeed);
