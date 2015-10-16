@@ -41,6 +41,22 @@
 }
 
 .health {
-  font-family:Helvetica;
-  font-size:36px;
+  background-size:contain;
+  border:1px solid green;
+  height:60px;
+  width:800px;
+}
+
+.flavor {
+  background-size:contain;
+  border:1px solid black;
+  float:left;
+  height:250px;
+  width:250px;
+  text-align:center;
+}
+
+img {
+  height:250px;
+  width:250px;
 }

@@ -29,12 +29,11 @@ var LetterScroller = (function() {
     },
 
     scrollNewLetter: function() {
-      console.log('Scroll Letter');
       // check if there are more letters to scroll through
       if(currentIndex >= currentStringArray.length) {
         return false;
       }
-      console.log('Inside scroll letter');
+      
       // create a new scrolling letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);

@@ -10,8 +10,12 @@ var GameController = (function() {
   var deleteScrollOffset = 100;
 
   // scrolling speed. 'i' is counter for the 'speed' array
-  var speed = [1000, 900, 800, 700, 600, 500];
+  var speed = [900, 900, 750, 650, 550, 450, 400, 350, 300, 250, 200, 200, 200];
   var speedCounter = 0;
+
+  // images
+  var flavorImageArray = ['images/flavorText1.jpg'];
+  var healthImage = 'url(images/health.gif)';
 
   // 'typeZone is the area on screen where you type for matches
   var typeZoneLeft = deleteScrollOffset + 10;
@@ -58,7 +62,7 @@ var GameController = (function() {
       // checking position of the scrolling letter
       if(firstLetter.position().left < typeZoneRight && firstLetter.position().left > typeZoneLeft) {
         if(GameObject.checkForMatch(letter)) {
-          $('.health').html('Great job!');
+          GameController.showFlavor();
           GameObject.removeFirstValue();
           LetterScroller.deleteLetter();
         } else {
@@ -117,7 +121,17 @@ var GameController = (function() {
     },
 
     updateDisplay: function() {
-      $('.health').html(Player.getHealth());
+      // draw health
+      var healthContainer = $('.health');
+
+      // reset health containers
+      $('.health').empty();
+
+      for(var i = 0; i < Player.getHealth(); i++) {
+        var newHealth = $('<div>');
+        newHealth.css({'background-image': healthImage, 'width':'50px', 'height':'50px', 'float':'left', 'border':'1px solid black'});
+        healthContainer.append(newHealth);
+      };
     },
 
     endGame: function() {
@@ -134,6 +148,22 @@ var GameController = (function() {
       restartButton.click(function() {
         GameController.startGame();
       });
+    },
+
+    showFlavor: function() {
+      // get the flavor image container
+      var flavorContainer = $('.flavor');
+
+      // grab a random image
+      var randomNumber = Math.floor(Math.random() * flavorImageArray.length);
+      var imagePath = 'url(' + flavorImageArray[randomNumber] + ')'
+
+      flavorContainer.css('background-image', imagePath);
+
+      // set timeOut to remove the background image
+      window.setTimeout(function(){
+        flavorContainer.css('background-image', '');
+      }, 500);
     }
 
   };
