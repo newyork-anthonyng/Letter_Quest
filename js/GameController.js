@@ -16,8 +16,9 @@ var GameController = (function() {
   // images
   var flavorImageArray = ['images/flavorText1.jpg'];
   var healthImage = 'url(images/health.gif)';
+  var heroImage = 'images/superhero.jpg';
 
-  // 'typeZone is the area on screen where you type for matches
+  // typeZone is the area on screen where you type for matches
   var typeZoneLeft = deleteScrollOffset + 10;
   var typeZoneRight = deleteScrollOffset + 200;
 
@@ -25,7 +26,6 @@ var GameController = (function() {
 
     startGame: function() {
       // set up intervals and listeners
-      console.log('Starting game');
       gameTimerId = window.setInterval(function() {
         GameController.updateGame();
       }, gameSpeed);
@@ -48,7 +48,11 @@ var GameController = (function() {
 
       // Reset player elements
       Player.resetPlayer();
-      $('button').remove();
+      // player image
+      var playerImage = $('<img></img>');
+      playerImage.attr('src', heroImage);
+      $('.hero').empty();
+      $('.hero').append(playerImage);
     },
 
     // check typed value for a match
@@ -143,8 +147,9 @@ var GameController = (function() {
       $('.scrollingLetterContainer').empty();
 
       // create a restart button
-      var restartButton = $('<button>Restart Game</button>', {class:'restart'});
-      $('body').prepend(restartButton);
+      var restartButton = $('.hero');
+      restartButton.empty();
+      restartButton.html('Click me to restart');
       restartButton.click(function() {
         GameController.startGame();
       });

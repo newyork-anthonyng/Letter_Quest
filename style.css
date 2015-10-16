@@ -27,23 +27,31 @@
   left:100px;
 }
 
-.image {
+.imageContainer {
   height:500px;
+  margin:5px auto;
   width:800px;
 }
 
 .hero {
+  border:1px dashed pink;
   float:left;
+  height:250px;
+  width:250px;
 }
 
 .enemy {
+  border:1px dashed pink;
   float:right;
+  height:250px;
+  width:250px;
 }
 
 .health {
   background-size:contain;
   border:1px solid green;
   height:60px;
+  margin:5px auto;
   width:800px;
 }
 
@@ -52,6 +60,7 @@
   border:1px solid black;
   float:left;
   height:250px;
+  margin:0px 20px 0px 20px;
   width:250px;
   text-align:center;
 }
