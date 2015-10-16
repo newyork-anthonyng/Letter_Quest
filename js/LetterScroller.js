@@ -20,10 +20,8 @@ var LetterScroller = (function() {
 
   return {
     createStringArray: function(array) {
-      if(currentStringArray.length === 0) {
         currentStringArray = array;
         currentIndex = 0;
-      };
     },
 
     getStringArray: function() {
@@ -63,11 +61,6 @@ var LetterScroller = (function() {
       // because we are deleting elements from the beginning of array
       currentIndex--;
     },
-
-    // restart LetterScroller
-    restartCurrentIndex: function() {
-      currentIndex = 0;
-    }
 
   }
 })();

@@ -40,6 +40,12 @@ var GameObject = (function() {
     // remove first value of array
     removeFirstValue: function() {
       currentStringArray.slice(1);
+    },
+
+    // restart game array
+    restart: function() {
+      currentStringArray = [];
     }
+
   }
 })();

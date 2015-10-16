@@ -33,6 +33,7 @@ var GameController = (function() {
       KeyListener.setUp();
 
       // create initial random strings
+      GameObject.restart();
       GameObject.createStringArray();
       LetterScroller.createStringArray(GameObject.getStringArray());
 
