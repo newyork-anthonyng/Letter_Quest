@@ -1,8 +1,8 @@
 /*
 GameController
-  -start the game
-  -check to see if the user entered key correctly
-  -delete the letters when they scroll off the screen
+  -start game
+  -check to see if user entered key correctly
+  -delete letters when they scroll off the screen
 */
 
 var GameController = (function() {
@@ -14,9 +14,11 @@ var GameController = (function() {
   var speedCounter = 0;
 
   // images
-  var flavorImageArray = ['images/flavorText1.jpg'];
-  var healthImage = 'url(images/health.gif)';
-  var heroImage = 'images/superhero.jpg';
+  var flavorImageArray = ['images/flavor1.png', 'images/flavor2.png', 'images/flavor3.png', 'images/flavor4.png', 'images/flavor5.png'];
+  var healthImage = 'url(images/health.png)';
+  var enemyHealthImage = 'url(images/enemyHealth.png)';
+  var heroImage = ['images/superhero.png', 'images/superheroFighting.png', 'images/superheroHurt.png', 'images/superheroDead.png'];
+  var enemyImage = ['images/enemy1.png', 'images/enemy2.png'];
 
   // typeZone is the area on screen where you type for matches
   var typeZoneLeft = deleteScrollOffset + 10;
@@ -30,9 +32,10 @@ var GameController = (function() {
         GameController.updateGame();
       }, gameSpeed);
 
+      speedCounter = 0;
       scrollingTimerId = window.setInterval(function() {
         LetterScroller.scrollNewLetter();
-      }, scrollingSpeed);
+      }, speed[speedCounter]);
 
       KeyListener.setUp();
 
@@ -42,6 +45,7 @@ var GameController = (function() {
       LetterScroller.createStringArray(GameObject.getStringArray());
 
       // Create typingZone
+      $('.typingContainer').remove();
       var typingZone = $('<div>', {class:'typingContainer'});
       typingZone.css({'width': '' + (typeZoneRight - typeZoneLeft) + 'px', 'height': '100px', 'left': '' + typeZoneLeft + 'px'});
       $('body').append(typingZone);
@@ -50,7 +54,7 @@ var GameController = (function() {
       Player.resetPlayer();
       // player image
       var playerImage = $('<img></img>');
-      playerImage.attr('src', heroImage);
+      playerImage.attr('src', heroImage[1]);
       $('.hero').empty();
       $('.hero').append(playerImage);
     },
@@ -133,7 +137,7 @@ var GameController = (function() {
 
       for(var i = 0; i < Player.getHealth(); i++) {
         var newHealth = $('<div>');
-        newHealth.css({'background-image': healthImage, 'width':'50px', 'height':'50px', 'float':'left', 'border':'1px solid black'});
+        newHealth.css({'background-image': healthImage, 'height':'100px', 'width':'100px', 'float':'left', 'background-size': 'cover', 'border':'1px solid black'});
         healthContainer.append(newHealth);
       };
     },
@@ -163,7 +167,7 @@ var GameController = (function() {
       var randomNumber = Math.floor(Math.random() * flavorImageArray.length);
       var imagePath = 'url(' + flavorImageArray[randomNumber] + ')'
 
-      flavorContainer.css('background-image', imagePath);
+      flavorContainer.css({'background-image': imagePath, 'background-repeat': 'no-repeat'});
 
       // set timeOut to remove the background image
       window.setTimeout(function(){

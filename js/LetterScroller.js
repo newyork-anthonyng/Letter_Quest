@@ -11,8 +11,8 @@ var LetterScroller = (function() {
   var currentIndex = 0;
 
   // Position variables for the scrolling letters
-  var heightOffset = -100;
-  var leftOffset = 200;
+  var heightOffset = 0;
+  var leftOffset = 20;
   var letterSize = 100;
 
   // Animation variables
@@ -57,9 +57,9 @@ var LetterScroller = (function() {
         // scrolling letter was typed correctly
         // animate the enemy
         $('.enemy').effect('shake', {distance:15});
+        $('.scrollingLetterContainer').effect('bounce', {distance:50});
       } else {
         // scrolling letter was missed
-        $('.health').effect('shake', {direction:'up', distance:4});
         $('.hero').effect('shake', {distance:15});
       }
 

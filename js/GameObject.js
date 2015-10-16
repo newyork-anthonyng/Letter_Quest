@@ -9,8 +9,9 @@ var GameObject = (function() {
   var currentStringArray = [];
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
-  var charSet = letterSet + numberSet;
-  var arrayLength = 12;
+  var charSet = '#${}/\\.?<>;:[]+=-';
+  var charSet = letterSet + numberSet + charSet;
+  var arrayLength = 10;
 
   return {
     // create new string array
