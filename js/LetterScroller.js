@@ -47,15 +47,14 @@ var LetterScroller = (function() {
       currentIndex++;
     },
 
-    // remove the first letter
+    // remove the first letter of the string array
+    // 'shake' variable will be true if letter was typed correctly, false otherwise
     deleteLetter: function(shake) {
       // find the first scrolling letter and delete it
-      // check if we want to animate letter first with a shake or a puff
       var myScrollingLetters = $('.scrollingLetter');
 
       if(shake) {
-        // scrolling letter was typed correctly
-        // animate the enemy
+        // scrolling letter was typed correctly. Animate the enemy
         $('.enemy').effect('shake', {distance:15});
         $('.scrollingLetterContainer').effect('bounce', {distance:50});
       } else {

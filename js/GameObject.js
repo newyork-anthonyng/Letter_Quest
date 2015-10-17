@@ -7,10 +7,12 @@
 var GameObject = (function() {
 
   var currentStringArray = [];
+  // charSet represents all the possible characters that will be shown in the game
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
-  var charSet = '#${}/\\.?<>;:[]+=-';
-  var charSet = letterSet + numberSet + charSet;
+  var symbolSet = '#${}/\\.?<>;:[]+=-';
+  var charSet = letterSet + numberSet + symbolSet;
+  // arrayLength represents how long each block of characters will be in the game
   var arrayLength = 10;
 
   return {
