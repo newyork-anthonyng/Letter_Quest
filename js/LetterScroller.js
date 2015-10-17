@@ -11,8 +11,8 @@ var LetterScroller = (function() {
   var currentIndex = 0;
 
   // Position variables for the scrolling letters
-  var heightOffset = -100;
-  var leftOffset = 200;
+  var heightOffset = 0;
+  var leftOffset = 20;
   var letterSize = 100;
 
   // Animation variables
@@ -20,10 +20,8 @@ var LetterScroller = (function() {
 
   return {
     createStringArray: function(array) {
-      if(currentStringArray.length === 0) {
         currentStringArray = array;
         currentIndex = 0;
-      };
     },
 
     getStringArray: function() {
@@ -31,12 +29,11 @@ var LetterScroller = (function() {
     },
 
     scrollNewLetter: function() {
-      console.log('Scroll Letter');
       // check if there are more letters to scroll through
       if(currentIndex >= currentStringArray.length) {
         return false;
       }
-      console.log('Inside scroll letter');
+
       // create a new scrolling letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
@@ -50,10 +47,21 @@ var LetterScroller = (function() {
       currentIndex++;
     },
 
-    // remove the first letter
-    deleteLetter: function() {
+    // remove the first letter of the string array
+    // 'shake' variable will be true if letter was typed correctly, false otherwise
+    deleteLetter: function(shake) {
       // find the first scrolling letter and delete it
       var myScrollingLetters = $('.scrollingLetter');
+
+      if(shake) {
+        // scrolling letter was typed correctly. Animate the enemy
+        $('.enemy').effect('shake', {distance:15});
+        $('.scrollingLetterContainer').effect('bounce', {distance:50});
+      } else {
+        // scrolling letter was missed
+        $('.hero').effect('shake', {distance:15});
+      }
+
       myScrollingLetters.eq(0).remove();
 
       // update currentStringArray
@@ -63,11 +71,6 @@ var LetterScroller = (function() {
       // because we are deleting elements from the beginning of array
       currentIndex--;
     },
-
-    // restart LetterScroller
-    restartCurrentIndex: function() {
-      currentIndex = 0;
-    }
 
   }
 })();

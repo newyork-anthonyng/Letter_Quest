@@ -1,9 +1,9 @@
 var Player = (function() {
-  var health = 5;
+  var health = 6;
 
   return {
     resetPlayer: function() {
-      health = 5;
+      health = 6;
     },
 
     damagePlayer: function(amount) {
