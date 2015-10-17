@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
 .scrollingLetter {
   background-color:lavender;
   border:3px solid black;
@@ -13,6 +18,7 @@
 }
 
 .scrollingLetterContainer {
+<<<<<<< HEAD
   background-color:blue;
   position:absolute;
 }
@@ -21,18 +27,47 @@
   background-color:indianred;
   border-radius:10%;
   opacity:0.5;
+=======
+  position:absolute;
+  top:413px;
+  width:10px;
+  height:10px;
+}
+
+.typingContainer {
+  background-color:black;
+  border-radius:10px;
+  opacity:0.25;
+>>>>>>> master
 
   position:absolute;
   top:413px;
   left:100px;
 }
 
+<<<<<<< HEAD
 .image {
   height:500px;
   width:800px;
 }
 
 .hero {
+=======
+.imageContainer {
+  height:500px;
+  margin:5px auto;
+  width:800px;
+}
+
+.hero, .enemy {
+  height:250px;
+  width:250px;
+}
+
+.hero {
+  font-family:Helvetica;
+  font-size:24px;
+>>>>>>> master
   float:left;
 }
 
@@ -41,6 +76,27 @@
 }
 
 .health {
+<<<<<<< HEAD
   font-family:Helvetica;
   font-size:36px;
+=======
+  border:1px solid black;
+  background-size:contain;
+  height:100px;
+  margin:5px auto;
+  width:800px;
+}
+
+.flavor {
+  background-size:contain;
+  float:left;
+  height:250px;
+  margin:0px 20px 0px 20px;
+  width:250px;
+  text-align:center;
+}
+
+img {
+  width:250px;
+>>>>>>> master
 }
