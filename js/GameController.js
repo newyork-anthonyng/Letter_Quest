@@ -9,6 +9,8 @@ var GameController = (function() {
   // position where letters will get deleted ('deleteZone');
   var deleteScrollOffset = 100;
 
+  var score = 0;
+
   // scrolling speed
   var speed = [900, 900, 700, 600, 500, 400, 390, 360, 330, 300, 290, 280, 270, 260, 250, 240, 230, 220, 210, 200];
   var speedCounter = 0;
@@ -41,6 +43,7 @@ var GameController = (function() {
       $('body').append(typingZone);
 
       // Reset player elements
+      score = 0;
       Player.resetPlayer();
 
       var playerImage = $('<img></img>');
@@ -86,6 +89,8 @@ var GameController = (function() {
           GameController.showFlavor();
           GameObject.removeFirstValue();
           LetterScroller.deleteLetter(true);
+          // play audio
+          audio_KeyPress.appendTo('body');
         } else {
           GameController.damagePlayer();
         }
@@ -154,6 +159,8 @@ var GameController = (function() {
       // check for death
       if(Player.getHealth() <= 0) {
         GameController.endGame();
+      } else {
+        score += 10;
       }
     },
 
@@ -171,6 +178,10 @@ var GameController = (function() {
                         'border':'1px solid black'});
         healthContainer.append(newHealth);
       }
+
+      // add score
+      var scoreDisplay = $('<p>Score: ' + score + '</p>');
+      healthContainer.append(scoreDisplay);
     },
 
     endGame: function() {
@@ -217,6 +228,7 @@ var GameController = (function() {
       restartButton.html('Click me to restart');
       restartButton.click(function() {
         GameController.startGame();
+        audio_KeyPress.play();
       });
     }
 
