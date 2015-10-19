@@ -90,7 +90,8 @@ var GameController = (function() {
           GameObject.removeFirstValue();
           LetterScroller.deleteLetter(true);
           // play audio
-          audio_KeyPress.appendTo('body');
+          var keyPress = document.getElementById('KeyPress');
+          keyPress.play();
         } else {
           GameController.damagePlayer();
         }
@@ -139,6 +140,9 @@ var GameController = (function() {
       playerImage.attr('src', heroImage[2]);
       $('.hero').empty();
       $('.hero').append(playerImage);
+      // play audio
+      var keyPress = document.getElementById('KeyPress_Incorrect');
+      keyPress.play();
 
       // change player sprite back to fightingPlayerSprite after a delay
       window.setTimeout(function() {
@@ -228,7 +232,6 @@ var GameController = (function() {
       restartButton.html('Click me to restart');
       restartButton.click(function() {
         GameController.startGame();
-        audio_KeyPress.play();
       });
     }
 

@@ -23,6 +23,9 @@ var GameObject = (function() {
         for(var i = 0; i < arrayLength; i++) {
           var randomNumber = Math.floor(Math.random() * charSet.length);
           currentStringArray.push(charSet[randomNumber]);
+          // play audio
+          var explosion = document.getElementById('Explosion');
+          explosion.play();
         };
         console.log(currentStringArray);
 
