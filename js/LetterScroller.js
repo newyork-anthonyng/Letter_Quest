@@ -11,8 +11,13 @@ var LetterScroller = (function() {
   var currentIndex = 0;
 
   // Position variables for the scrolling letters
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
   var heightOffset = 0;
   var leftOffset = 20;
+=======
+  var heightOffset = -100;
+  var leftOffset = 200;
+>>>>>>> Added gh-pages
   var letterSize = 100;
 
   // Animation variables
@@ -20,8 +25,15 @@ var LetterScroller = (function() {
 
   return {
     createStringArray: function(array) {
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
         currentStringArray = array;
         currentIndex = 0;
+=======
+      if(currentStringArray.length === 0) {
+        currentStringArray = array;
+        currentIndex = 0;
+      };
+>>>>>>> Added gh-pages
     },
 
     getStringArray: function() {
@@ -29,11 +41,19 @@ var LetterScroller = (function() {
     },
 
     scrollNewLetter: function() {
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
+=======
+      console.log('Scroll Letter');
+>>>>>>> Added gh-pages
       // check if there are more letters to scroll through
       if(currentIndex >= currentStringArray.length) {
         return false;
       }
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 
+=======
+      console.log('Inside scroll letter');
+>>>>>>> Added gh-pages
       // create a new scrolling letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
@@ -47,6 +67,7 @@ var LetterScroller = (function() {
       currentIndex++;
     },
 
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
     // remove the first letter of the string array
     // 'shake' variable will be true if letter was typed correctly, false otherwise
     deleteLetter: function(shake) {
@@ -62,6 +83,12 @@ var LetterScroller = (function() {
         $('.hero').effect('shake', {distance:15});
       }
 
+=======
+    // remove the first letter
+    deleteLetter: function() {
+      // find the first scrolling letter and delete it
+      var myScrollingLetters = $('.scrollingLetter');
+>>>>>>> Added gh-pages
       myScrollingLetters.eq(0).remove();
 
       // update currentStringArray
@@ -72,5 +99,13 @@ var LetterScroller = (function() {
       currentIndex--;
     },
 
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
+=======
+    // restart LetterScroller
+    restartCurrentIndex: function() {
+      currentIndex = 0;
+    }
+
+>>>>>>> Added gh-pages
   }
 })();
