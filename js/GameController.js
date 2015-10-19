@@ -60,7 +60,7 @@ var GameController = (function() {
       $('.enemy').append(myEnemyImage);
 
       // Reset flavor
-      $('.flavor').css({'background-image':''});
+      $('.flavor').empty();
     },
 
     setUpIntervals: function() {
@@ -198,8 +198,10 @@ var GameController = (function() {
       GameController.createRestartButton();
 
       // show dead hero
-      $('.flavor').css({'background-image': 'url(' + heroImage[3] + ')',
-                        'background-repeat': 'no-repeat'});
+      var playerImage = $('<img></img>');
+      playerImage.attr('src', heroImage[3]);
+      $('.hero').empty();
+      $('.hero').append(playerImage);
     },
 
     showFlavor: function() {
@@ -227,9 +229,9 @@ var GameController = (function() {
     },
 
     createRestartButton: function() {
-      var restartButton = $('.hero');
+      var restartButton = $('.flavor');
       restartButton.empty();
-      restartButton.html('Click me to restart');
+      restartButton.html('<h1>Click me to restart</h1>');
       restartButton.click(function() {
         GameController.startGame();
       });
