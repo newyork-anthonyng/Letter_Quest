@@ -1,5 +1,8 @@
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 /*Scrolling Letter*/
 
+=======
+>>>>>>> Added gh-pages
 .scrollingLetter {
   background-color:lavender;
   border:3px solid black;
@@ -15,6 +18,7 @@
 }
 
 .scrollingLetterContainer {
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
   position:absolute;
   top:413px;
   width:10px;
@@ -25,12 +29,23 @@
   background-color:black;
   border-radius:10px;
   opacity:0.25;
+=======
+  background-color:blue;
+  position:absolute;
+}
+
+.typingContainer {
+  background-color:indianred;
+  border-radius:10%;
+  opacity:0.5;
+>>>>>>> Added gh-pages
 
   position:absolute;
   top:413px;
   left:100px;
 }
 
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 /*Images */
 
 .imageContainer {
@@ -47,6 +62,14 @@
 .hero {
   font-family:Helvetica;
   font-size:24px;
+=======
+.image {
+  height:500px;
+  width:800px;
+}
+
+.hero {
+>>>>>>> Added gh-pages
   float:left;
 }
 
@@ -54,6 +77,7 @@
   float:right;
 }
 
+<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 img {
   width:250px;
 }
@@ -87,4 +111,9 @@ img {
   margin:0px 20px 0px 20px;
   width:250px;
   text-align:center;
+=======
+.health {
+  font-family:Helvetica;
+  font-size:36px;
+>>>>>>> Added gh-pages
 }
