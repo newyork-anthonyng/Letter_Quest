@@ -11,8 +11,13 @@ var LetterScroller = (function() {
   var currentIndex = 0;
 
   // Position variables for the scrolling letters
+<<<<<<< HEAD
+  var heightOffset = -100;
+  var leftOffset = 200;
+=======
   var heightOffset = 0;
   var leftOffset = 20;
+>>>>>>> master
   var letterSize = 100;
 
   // Animation variables
@@ -20,8 +25,15 @@ var LetterScroller = (function() {
 
   return {
     createStringArray: function(array) {
+<<<<<<< HEAD
+      if(currentStringArray.length === 0) {
         currentStringArray = array;
         currentIndex = 0;
+      };
+=======
+        currentStringArray = array;
+        currentIndex = 0;
+>>>>>>> master
     },
 
     getStringArray: function() {
@@ -29,11 +41,19 @@ var LetterScroller = (function() {
     },
 
     scrollNewLetter: function() {
+<<<<<<< HEAD
+      console.log('Scroll Letter');
+=======
+>>>>>>> master
       // check if there are more letters to scroll through
       if(currentIndex >= currentStringArray.length) {
         return false;
       }
+<<<<<<< HEAD
+      console.log('Inside scroll letter');
+=======
 
+>>>>>>> master
       // create a new scrolling letter
       var newLetter = $('<div>', {id:currentStringArray[currentIndex], class:'scrollingLetter'});
       newLetter.html(currentStringArray[currentIndex]);
@@ -47,6 +67,12 @@ var LetterScroller = (function() {
       currentIndex++;
     },
 
+<<<<<<< HEAD
+    // remove the first letter
+    deleteLetter: function() {
+      // find the first scrolling letter and delete it
+      var myScrollingLetters = $('.scrollingLetter');
+=======
     // remove the first letter of the string array
     // 'shake' variable will be true if letter was typed correctly, false otherwise
     deleteLetter: function(shake) {
@@ -62,6 +88,7 @@ var LetterScroller = (function() {
         $('.hero').effect('shake', {distance:15});
       }
 
+>>>>>>> master
       myScrollingLetters.eq(0).remove();
 
       // update currentStringArray
@@ -72,5 +99,13 @@ var LetterScroller = (function() {
       currentIndex--;
     },
 
+<<<<<<< HEAD
+    // restart LetterScroller
+    restartCurrentIndex: function() {
+      currentIndex = 0;
+    }
+
+=======
+>>>>>>> master
   }
 })();

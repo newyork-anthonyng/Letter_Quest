@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 <<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 /*Scrolling Letter*/
 
 =======
 >>>>>>> Added gh-pages
+=======
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
 .scrollingLetter {
   background-color:lavender;
   border:3px solid black;
@@ -18,7 +26,20 @@
 }
 
 .scrollingLetterContainer {
+<<<<<<< HEAD
 <<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
+=======
+<<<<<<< HEAD
+  background-color:blue;
+  position:absolute;
+}
+
+.typingContainer {
+  background-color:indianred;
+  border-radius:10%;
+  opacity:0.5;
+=======
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
   position:absolute;
   top:413px;
   width:10px;
@@ -29,6 +50,7 @@
   background-color:black;
   border-radius:10px;
   opacity:0.25;
+<<<<<<< HEAD
 =======
   background-color:blue;
   position:absolute;
@@ -39,15 +61,29 @@
   border-radius:10%;
   opacity:0.5;
 >>>>>>> Added gh-pages
+=======
+>>>>>>> master
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
 
   position:absolute;
   top:413px;
   left:100px;
 }
 
+<<<<<<< HEAD
 <<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 /*Images */
 
+=======
+<<<<<<< HEAD
+.image {
+  height:500px;
+  width:800px;
+}
+
+.hero {
+=======
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
 .imageContainer {
   height:500px;
   margin:30px auto 0px auto;
@@ -62,6 +98,7 @@
 .hero {
   font-family:Helvetica;
   font-size:24px;
+<<<<<<< HEAD
 =======
 .image {
   height:500px;
@@ -70,6 +107,9 @@
 
 .hero {
 >>>>>>> Added gh-pages
+=======
+>>>>>>> master
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
   float:left;
 }
 
@@ -85,8 +125,16 @@ img {
 /*Health*/
 
 .health {
+<<<<<<< HEAD
   border:8px solid black;
   border-radius:5px;
+=======
+<<<<<<< HEAD
+  font-family:Helvetica;
+  font-size:36px;
+=======
+  border:1px solid black;
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
   background-size:contain;
   height:100px;
   margin:5px auto;
@@ -111,9 +159,17 @@ img {
   margin:0px 20px 0px 20px;
   width:250px;
   text-align:center;
+<<<<<<< HEAD
 =======
 .health {
   font-family:Helvetica;
   font-size:36px;
 >>>>>>> Added gh-pages
+=======
+}
+
+img {
+  width:250px;
+>>>>>>> master
+>>>>>>> 57d56c559032f32997480748348d31f3b95ab307
 }
