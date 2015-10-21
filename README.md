@@ -1,7 +1,10 @@
 # Letter Quest
 
+<<<<<<< HEAD
+=======
 http://newyork-anthonyng.github.io/Letter_Quest/
 
+>>>>>>> master
 This game will follow the quest of an Envelope, as he tries to use his letters to defeat evil and make it home. Use your typing skills to slay monsters and make it to the mailbox.
 
 ## User Stories
