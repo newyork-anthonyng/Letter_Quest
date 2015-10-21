@@ -1,10 +1,7 @@
 # Letter Quest
 
-<<<<<<< 23080f41b22d4ee00e6efa133888924ca7d87dd5
 http://newyork-anthonyng.github.io/Letter_Quest/
 
-=======
->>>>>>> Added gh-pages
 This game will follow the quest of an Envelope, as he tries to use his letters to defeat evil and make it home. Use your typing skills to slay monsters and make it to the mailbox.
 
 ## User Stories
@@ -38,18 +35,3 @@ There are two phases to the game: *walking* and *fighting*.
 ### Enemy Attributes and Skills
 * Attack Strength
 * Health
-
-## To Do List
-* ~~Create mechanic for scrolling letters~~
-* ~~Create mechanic for registering key strokes~~
-* ~~Figure out how to match typed letter against the scrolling letter~~
-* Create art assets
-    * Player Character
-        * Walking
-        * Fighting
-        * Hurt
-    * Background
-    * Letter bubble
-    * Enemies
-    * Heart (HUD)
-* Create enemies
