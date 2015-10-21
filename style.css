@@ -54,15 +54,6 @@
 }
 
 .hero {
-  font-family:Helvetica;
-  font-size:24px;
-
-.image {
-  height:500px;
-  width:800px;
-}
-
-.hero {
   float:left;
 }
 
@@ -103,6 +94,7 @@ img {
   margin:0px 20px 0px 20px;
   width:250px;
   text-align:center;
+}
 
 .health {
   font-family:Helvetica;
