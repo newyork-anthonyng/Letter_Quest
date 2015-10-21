@@ -7,12 +7,6 @@
 var GameObject = (function() {
 
   var currentStringArray = [];
-<<<<<<< HEAD
-  var letterSet = 'abcdefghijklmnopqrstuvwxyz';
-  var numberSet = '1234567890';
-  var charSet = letterSet + numberSet;
-  var arrayLength = 12;
-=======
   // charSet represents all the possible characters that will be shown in the game
   var letterSet = 'abcdefghijklmnopqrstuvwxyz';
   var numberSet = '1234567890';
@@ -20,7 +14,6 @@ var GameObject = (function() {
   var charSet = letterSet + numberSet + symbolSet;
   // arrayLength represents how long each block of characters will be in the game
   var arrayLength = 10;
->>>>>>> master
 
   return {
     // create new string array
@@ -38,14 +31,10 @@ var GameObject = (function() {
 
         // Game speed will increase everytime we create a new string array
         GameController.changeScrollSpeed();
-<<<<<<< HEAD
-      };
-=======
         return true;
       };
 
       return false;
->>>>>>> master
     },
 
     getStringArray: function() {
@@ -60,9 +49,6 @@ var GameObject = (function() {
     // remove first value of array
     removeFirstValue: function() {
       currentStringArray.slice(1);
-<<<<<<< HEAD
-    }
-=======
     },
 
     // restart game array
@@ -70,6 +56,5 @@ var GameObject = (function() {
       currentStringArray = [];
     }
 
->>>>>>> master
   }
 })();

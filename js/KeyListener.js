@@ -1,13 +1,4 @@
 var KeyListener = (function() {
-<<<<<<< HEAD
-
-  return {
-    // set up eventListener
-    setUp: function() {
-      $(document).keypress(function(e) {
-        KeyListener.processKeyPress(String.fromCharCode(e.keyCode));
-      });
-=======
   // 'first' ensures we only create eventListener once
   var first = false;
   return {
@@ -20,7 +11,6 @@ var KeyListener = (function() {
         });
         first = true;
       }
->>>>>>> master
     },
 
     processKeyPress: function(keyPress) {
